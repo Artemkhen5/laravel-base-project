@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class IndexResponseDTO
 {
-    public function __construct(private int $total, private Collection $collection)
-    {
-    }
+    public function __construct(private int $total, private Collection $collection) {}
 
     public function getTotal(): int
     {

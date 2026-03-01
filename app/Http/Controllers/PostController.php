@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 final class PostController extends Controller
 {
-    public function __construct(private PostRepository $repository)
-    {
-    }
+    public function __construct(private PostRepository $repository) {}
 
     /**
      * Display a listing of the resource.

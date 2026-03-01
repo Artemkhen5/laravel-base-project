@@ -10,9 +10,7 @@ class IndexParams
     private int|null $limit;
     private int|null $offset;
 
-    public function __construct(
-        ?array $range
-    )
+    public function __construct(?array $range)
     {
         $this->range = $range ?? self::DEFAULT_RANGE;
 

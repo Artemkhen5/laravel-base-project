@@ -23,11 +23,9 @@ abstract class BaseTest extends TestCase
 
     public function testCorrectMethodIndex(): void
     {
-        $this->model::factory(3)->create(
-            [
-                'user_id' => $this->user->id,
-            ]
-        );
+        $this->model::factory(3)->create([
+            'user_id' => $this->user->id,
+        ]);
         $response = $this->get(route($this->route . '.index'));
         $response->assertStatus(200)->assertJsonCount(3);
     }

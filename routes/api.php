@@ -15,7 +15,9 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/me', [UserController::class, 'me'])->name('me');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-    Route::post('/refresh-tokens', [UserController::class, 'refreshTokens'])->name('refresh-tokens');
+    Route::post('/refresh-tokens', [UserController::class, 'refreshTokens'])->name(
+        'refresh-tokens',
+    );
 
     /** Posts */
     Route::apiResource('posts', PostController::class);
