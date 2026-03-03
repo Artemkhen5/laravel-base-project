@@ -23,4 +23,9 @@ class PostControllerTest extends BaseTest
     {
         parent::testCorrectMethodIndexWithRange();
     }
+
+    public function testCorrectMethodIndexWithSort(): void
+    {
+        parent::testCorrectMethodIndexWithSort();
+    }
 }

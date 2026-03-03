@@ -9,10 +9,12 @@ class IndexParams
     private array|null $range;
     private int|null $limit;
     private int|null $offset;
+    private array|null $sort;
 
-    public function __construct(?array $range)
+    public function __construct(?array $range, ?array $sort)
     {
         $this->range = $range ?? self::DEFAULT_RANGE;
+        $this->sort = $sort;
 
         $start = min($this->range);
         $end = max($this->range);
@@ -29,5 +31,10 @@ class IndexParams
     public function getOffset(): ?int
     {
         return $this->offset;
+    }
+
+    public function getSort(): ?array
+    {
+        return $this->sort;
     }
 }

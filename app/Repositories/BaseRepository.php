@@ -19,8 +19,9 @@ abstract class BaseRepository implements RepositoryInterface
     public function index(IndexParams $params): IndexResponseDTO
     {
         $total = $this->builder->count();
-        $builder = $this->applyRange($params);
-        return new IndexResponseDTO($total, $builder->get());
+        $this->applyRange($params);
+        $this->applySort($params);
+        return new IndexResponseDTO($total, $this->builder->get());
     }
 
     public function getTotal(Builder $builder): int
@@ -28,8 +29,17 @@ abstract class BaseRepository implements RepositoryInterface
         return $this->builder->count();
     }
 
-    public function applyRange(IndexParams $params): Builder
+    public function applyRange(IndexParams $params): void
     {
-        return $this->builder->offset($params->getOffset())->limit($params->getLimit());
+        $this->builder->offset($params->getOffset())->limit($params->getLimit());
+    }
+
+    public function applySort(IndexParams $params): void
+    {
+        if (!is_null($params->getSort())) {
+            $column = $params->getSort()[0];
+            $dir = $params->getSort()[1];
+            $this->builder->orderBy($column, $dir);
+        }
     }
 }

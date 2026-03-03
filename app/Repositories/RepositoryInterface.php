@@ -12,5 +12,7 @@ interface RepositoryInterface
 
     public function getTotal(Builder $builder): int;
 
-    public function applyRange(IndexParams $params): Builder;
+    public function applyRange(IndexParams $params): void;
+
+    public function applySort(IndexParams $params): void;
 }
